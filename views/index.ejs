@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Signup</title>
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="grid-overlay"></div>
+
+<div class="container">
+  <div class="login-box">
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
+    <div class="logo">
+      <h1 class="glitch-text" data-text="ZkaDoosh">ZkaDoosh</h1>
+    </div>
+
+    <!-- No form here -->
+    <div class="login-form">
+      <div class="form-group">
+        <label for="username">USERNAME</label>
+        <input type="text" id="username" name="username" required autocomplete="off">
+        <div class="input-border"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" name="password" required>
+        <div class="input-border"></div>
+        <div class="password-toggle">SHOW</div>
+      </div>
+
+      <!-- Just a button-like div now -->
+      <div class="login-btn" id="loginButton">
+        <span class="btn-text">LOGIN</span>
+        <span class="btn-glow"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function linsup(){
+    const uname = document.getElementById('username');
+    const pass = document.getElementById('password');
+    console.log(uname, pass);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Password toggle
+    const passwordToggle = document.querySelector('.password-toggle');
+    const passwordInput = document.querySelector('#password');
+
+    passwordToggle.addEventListener('click', function() {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggle.textContent = 'HIDE';
+      } else {
+        passwordInput.type = 'password';
+        passwordToggle.textContent = 'SHOW';
+      }
+    });
+
+    // Add pulse effect to login button
+    const loginBtn = document.querySelector('.login-btn');
+    setInterval(() => {
+      loginBtn.classList.add('pulse');
+      setTimeout(() => {
+        loginBtn.classList.remove('pulse');
+      }, 1000);
+    }, 3000);
+
+    // Create dynamic background elements
+    const container = document.querySelector('.container');
+    for (let i = 0; i < 5; i++) {
+      const line = document.createElement('div');
+      line.classList.add('bg-line');
+      line.style.left = Math.random() * 100 + '%';
+      line.style.animationDelay = Math.random() * 2 + 's';
+      container.appendChild(line);
+    }
+
+  });
+</script>
+</body>
+</html>
